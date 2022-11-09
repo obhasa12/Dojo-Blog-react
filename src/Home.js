@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react"
 import BlogLists from "./BlogLists";
+import useFetch from "./useFetch";
 
 
 const Home = () => {
@@ -8,32 +8,14 @@ const Home = () => {
     //     { title : ' odo dan Miyi tebang', body : ' none ', author : 'igy', id : 2},
     //     { title : ' Moyi dan odo tebang', body : ' none ', author : 'moyi', id : 3}
     // ])
-    const [blogs, setBlogs] = useState(null)
-    const [isPending, setPending] = useState(true)
-    const [error, setError] = useState(null)
     
-    useEffect(() => {
-        setTimeout(() => {
-            fetch('http://localhost:8000/blogs')
-            .then((res) => {
-                if(!res.ok) throw Error('Could not fetch the data from the resource')
-                return res.json()
-            })
-            .then((data) => {
-                setBlogs(data)
-                setPending(false)
-                setError(null)
-            })
-            .catch((err) => {
-                setPending(false)
-                setError(err.message)
-            })
-        },1000);
-    },[])
+    const {isPending, error} = useFetch('http://localhost:8000/blogs')
+
+    const blogs = useFetch('http://localhost:8000/blogs').data
 
     const handleDelete = (id) => {
         const newBlogs = blogs.filter((blog) => blog.id !== id)
-        setBlogs(newBlogs)
+        // setBlogs(newBlogs)
         console.log(newBlogs)
     }
     return (

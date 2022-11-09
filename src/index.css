@@ -49,3 +49,28 @@
 .blog-preview button {
   margin-top: 1rem;
 }
+.blog-preview a{
+  text-decoration: none;
+}
+.blog-detail h2{
+  font-size: 20px;
+  color: #f1356d;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+.blog-detail div{
+  margin: 20px 0;
+  text-align: justify;
+}
+.blog-detail button{
+  background: #f1356d;
+  color: white;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.blog-detail p{
+  text-transform: capitalize;
+}
